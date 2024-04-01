@@ -14,7 +14,7 @@ services:
     build:
       context: ./backend
     volumes:
-      - ./app:/code/app
+      - ./app:/app
     command: uvicorn app.main:app --host 0.0.0.0 --reload
     pull_policy: build
     image: recomender_be:latest
