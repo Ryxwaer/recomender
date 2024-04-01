@@ -1,0 +1,26 @@
+version: '3.8'
+services:
+  recomender_fe:
+    container_name: recomender_fe
+    build:
+      context: ./frontend
+    pull_policy: build
+    image: recomender_fe:latest
+    networks:
+      - nginx-proxy-manager_default
+
+  recomender_be:
+    container_name: recomender_be
+    build:
+      context: ./backend
+    volumes:
+      - ./app:/code/app
+    command: uvicorn app.main:app --host 0.0.0.0 --reload
+    pull_policy: build
+    image: recomender_be:latest
+    networks:
+      - nginx-proxy-manager_default
+
+networks:
+  nginx-proxy-manager_default:
+    external: true
