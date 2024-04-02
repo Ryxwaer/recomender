@@ -3,14 +3,18 @@
     <div
       class="fixed top-0 left-0 right-0 z-10 bg-white p-4 flex justify-center"
     >
-      <input
-        class="w-full max-w-4xl mx-auto text-lg p-4 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-blue-500 transition-colors"
-        type="text"
-        placeholder="Search Book"
-        @input="debounceSearch"
-        v-model="searchInput"
-      />
-      <div v-if="pending" class="text-center mt-2">Loading...</div>
+      <div class="relative w-full max-w-4xl mx-auto">
+        <input
+          class="w-full text-lg p-4 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-blue-500 transition-colors"
+          type="text"
+          placeholder="Search Book"
+          @input="debounceSearch"
+          v-model="searchInput"
+        />
+        <div v-if="pending" class="absolute right-0 top-0 mt-5 mr-4">
+          <span class="text-sm">Loading...</span>
+        </div>
+      </div>
     </div>
     <div class="pt-24 overflow-auto">
       <ul v-if="searchResults.length" class="results max-w-4xl mx-auto">
@@ -82,7 +86,6 @@ const selectBook = (book) => {
 };
 
 const fetchRecomendations = async (book) => {
-  pending.value = true;
   recResult.value = await $fetch("/api/recomend", {
     params: { book },
   });
