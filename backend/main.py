@@ -21,11 +21,11 @@ dtype_books = {
 }
 
 # load ratings
-ratings = pd.read_csv('./BX-Book-Ratings.csv', encoding='cp1251', sep=';', dtype=dtype_ratings)
+ratings = pd.read_csv('./BX-Book-Ratings-Cleaned.csv', encoding='cp1251', sep=';', dtype=dtype_ratings)
 ratings = ratings[ratings['Book-Rating']!=0]
 
 # load books
-books = pd.read_csv('./BX-Books.csv',  encoding='cp1251', sep=';', dtype=dtype_books, on_bad_lines='skip')
+books = pd.read_csv('./BX-Books-Cleaned.csv',  encoding='cp1251', sep=';', dtype=dtype_books, on_bad_lines='skip')
 
 titles = books[['Book-Title']].drop_duplicates()
 
