@@ -26,7 +26,7 @@
             </tbody>
         </table>
         <div v-else>
-          <div class="text-center mt-2">No correlation found with selected title.</div>
+          <div class="text-center mt-2">Loading recommendations...</div>
         </div>
       </div>
       <div>
