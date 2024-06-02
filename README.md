@@ -1,6 +1,6 @@
 ## Recomender task
 
-available at recomender.ryxwaer.com
+available at https://recomender.ryxwaer.com
 
 ## Structure
 <div align="center">
