@@ -9,6 +9,7 @@
           type="text"
           placeholder="Search Book"
           @input="debounceSearch"
+          @click="hideModal"
           v-model="searchInput"
         />
         <div v-if="pending" class="absolute right-0 top-0 mt-5 mr-4">
@@ -89,5 +90,9 @@ const fetchRecomendations = async (book) => {
   recResult.value = await $fetch("/api/recomend", {
     params: { book },
   });
+};
+
+const hideModal = () => {
+  showModal.value = false;
 };
 </script>

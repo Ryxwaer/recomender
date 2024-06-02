@@ -1,2 +1,3 @@
-pandas
-fastapi
+pandas~=2.2.2
+fastapi~=0.111.0
+pydantic~=2.7.2

@@ -1,0 +1,27 @@
+version: '3.8'
+services:
+  recomender_fe:
+    container_name: recomender_fe
+    ports:
+      - 3000:3000
+    build:
+      context: ./frontend
+    pull_policy: build
+    image: recomender_fe:latest
+    networks:
+      - nginx-proxy-manager_default
+
+  recomender_be:
+    container_name: recomender_be
+    ports:
+      - 8000:8000
+    build:
+      context: ./backend
+    pull_policy: build
+    image: recomender_be:latest
+    networks:
+      - nginx-proxy-manager_default
+
+networks:
+  nginx-proxy-manager_default:
+    driver: bridge
